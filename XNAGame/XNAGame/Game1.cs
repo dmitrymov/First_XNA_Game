@@ -34,10 +34,29 @@ namespace XNAGame
 			//graphics.ToggleFullScreen();
 			screenWidth = GraphicsDevice.Viewport.Width;
 			screenHeight = GraphicsDevice.Viewport.Height;
-			List<Level> levelList = null;
+			List<Level> levelList = LevelsCreate();
 			animation = new Animation(Content, screenWidth, screenHeight, levelList);
 			
 			base.Initialize();
+		}
+
+		private List<Level> LevelsCreate()
+		{
+			List<Level> ans = new List<Level>();
+			ans.Add(CreateDefaultLevel());
+			return ans;
+		}
+
+		private Level CreateDefaultLevel()
+		{
+			List<Texture2D> newTxt = new List<Texture2D>();
+			List<Rectangle> newRec = new List<Rectangle>();
+			newTxt.Add(Content.Load<Texture2D>("ground"));
+			newTxt.Add(Content.Load<Texture2D>("ground"));
+			newRec.Add(new Rectangle(0, GraphicsDevice.Viewport.Height - 40, GraphicsDevice.Viewport.Width, newTxt[0].Height));
+			newRec.Add(new Rectangle(200, GraphicsDevice.Viewport.Height - 60, 40, 40));
+			Level defLevel = new Level(newTxt, newRec);
+			return defLevel;
 		}
 
 		protected override void LoadContent()

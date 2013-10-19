@@ -25,6 +25,8 @@ namespace XNAGame
 	class ScrollingBackground : Background
 	{
 
+		const int scrolingSpeed = 6;
+
 		public ScrollingBackground(Texture2D newTexture, Rectangle newRectangle)
 		{
 			texture = newTexture;
@@ -34,9 +36,9 @@ namespace XNAGame
 		public void Update()
 		{
 			if(Keyboard.GetState().IsKeyDown(Keys.Right))
-				rectangle.X -= 3;
+				rectangle.X -= scrolingSpeed;
 			if(Keyboard.GetState().IsKeyDown(Keys.Left))
-				rectangle.X += 3;
+				rectangle.X += scrolingSpeed;
 		}
 
 	}

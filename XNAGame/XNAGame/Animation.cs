@@ -179,6 +179,8 @@ namespace XNAGame
 			foreach (var enemy in enemys)
 			{
 				enemy.OnFloor = false;
+				pos = enemy.Position;
+				playerRec = enemy.Rectangle;
 				foreach (var rec in rectangleList)
 				{
 					if (pos.X >= rec.X && pos.X <= rec.X + rec.Width)
@@ -190,6 +192,7 @@ namespace XNAGame
 							break;
 						}
 					}
+					//enemy.OnFloor = false;
 				}
 			}
 		}

@@ -33,6 +33,7 @@ namespace XNAGame
 
 		public Player(Texture2D newTexture)
 		{
+			direction = 1;
 			texture = newTexture;
 			rectangle = new Rectangle(0, 0, frameWidth, frameHeight);
 			blockedVecor = new Vector2(0, 0);
@@ -120,7 +121,8 @@ namespace XNAGame
 				//AnimateJump(gameTime);
 				return;
 			}
-			flying = false;
+			else
+				flying = false;
 		}
 
 
@@ -200,7 +202,7 @@ namespace XNAGame
 			else if (!flying)
 			{
 				//velocity = Vector2.Zero;
-				if (direction > 0)
+				if (direction >= 0)
 					currentFrame = 0;
 				else
 					currentFrame = 9;
@@ -220,7 +222,7 @@ namespace XNAGame
 		private void BulletsUpdate(GameTime gameTime)
 		{
 			bulletTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
-			if (Keyboard.GetState().IsKeyDown(Keys.Space) && bulletTimer > interval)
+			if (Keyboard.GetState().IsKeyDown(Keys.Space) && bulletTimer > interval*4)
 			{
 				bulletList.Add(new Bullet(bulletTexture, (int)position.X + frameWidth / 2, (int)position.Y - 30, movingSpeed, direction));
 				bulletTimer = 0;
@@ -325,8 +327,6 @@ namespace XNAGame
 		{
 			base.Draw(spriteBatch);
 		}
-
-
 
 		private void AnimateMove(GameTime gameTime)
 		{

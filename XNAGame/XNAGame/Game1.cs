@@ -53,7 +53,7 @@ namespace XNAGame
 			List<Rectangle> newRec = new List<Rectangle>();
 			newTxt.Add(Content.Load<Texture2D>("ground"));
 			newTxt.Add(Content.Load<Texture2D>("ground"));
-			newRec.Add(new Rectangle(0, GraphicsDevice.Viewport.Height - 40, GraphicsDevice.Viewport.Width, newTxt[0].Height));
+			newRec.Add(new Rectangle(-40, GraphicsDevice.Viewport.Height - 40, GraphicsDevice.Viewport.Width + 80, newTxt[0].Height));
 			newRec.Add(new Rectangle(200, GraphicsDevice.Viewport.Height - 60, 40, 40));
 			Level defLevel = new Level(newTxt, newRec);
 			return defLevel;
